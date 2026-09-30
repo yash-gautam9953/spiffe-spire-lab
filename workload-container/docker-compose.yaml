@@ -1,0 +1,11 @@
+services:
+  python-workload:
+    build:
+      context: .
+    user: "1001:1001"
+    volumes:
+      - ./sockets:/opt/spire/sockets
+      - ./svid:/tmp/svid
+    environment:
+      SPIFFE_ENDPOINT_SOCKET: unix:///opt/spire/sockets/workload_api.sock
+      SVID_OUTPUT_DIR: /tmp/svid
